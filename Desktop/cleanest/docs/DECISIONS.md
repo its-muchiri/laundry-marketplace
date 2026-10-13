@@ -74,6 +74,12 @@ Date: 2026-10-11. Status: accepted.
 
 Reason: many Kenyan locations have no formal address.
 
+## D13: Rebrand to Cleanest Enterprise and glass design system
+
+Date: 2026-10-13. Status: accepted.
+
+Reason: the owner is rebranding from LaundryKE to Cleanest Enterprise, a premium, tech-driven laundry and dry cleaning brand for households and businesses (hotels, Airbnbs, restaurants, clinics, offices). The visual language is clean, calm and modern like a high-end SaaS product: white and off-white surfaces, deep navy text and dark sections, a fresh aqua/teal primary accent and one small warm accent, all as CSS variables with light and dark mode. Glassmorphism (translucent panels, backdrop blur, 1px semi-transparent border, faint top highlight) on the navbar, floating cards, booking panel and pricing cards, plus a reusable ReededGlass component, glow orbs and Motion animations (200-600ms, reduced-motion safe). Allowed stack: Tailwind CSS, shadcn/ui, Motion, lucide-react. Brand name, tagline and nav labels are centralised in apps/web/lib/brand.ts.
+
 ## Open decisions
 
 - ORM or query layer that works well with PostGIS.
