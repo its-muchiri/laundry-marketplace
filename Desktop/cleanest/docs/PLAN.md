@@ -114,9 +114,12 @@ Presentation only: no changes to API contracts, route paths, data models, order 
   - Order tracker: five-stage timeline with timestamps, rider card with WhatsApp, delivery address with landmark, price breakdown, rating form.
   - Instagram handle still pending from the owner.
 
-### R4: Provider, rider and admin screens
+### R4: Provider, rider and admin screens - DONE 2026-10-13 (auth screens; no provider/rider/admin screens exist yet)
 
-- [ ] Restyle only the screens that exist. Dense data tables stay clean and readable, with glass used sparingly (cards and overlays, not table cells).
+- [x] Restyle only the screens that exist. Dense data tables stay clean and readable, with glass used sparingly (cards and overlays, not table cells).
+  - No provider, rider or admin screens exist in apps/web yet (footer links point to routes Track A will build), so there was nothing to restyle beyond the existing customer screens.
+  - Login and sign-up forms restyled from hardcoded gray/red classes to design tokens (background, surface, foreground, border, error, primary-strong) so dark mode applies.
+  - When Track A lands the provider/rider/admin screens, they should use the token utilities and glass sparingly (cards/overlays only, not table cells).
 
 ### R5: Polish
 

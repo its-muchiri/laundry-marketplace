@@ -6,6 +6,10 @@ Format: Added, Changed, Fixed, Removed, Security.
 
 ## [Unreleased]
 
+### Changed
+
+- Track B R4: login and sign-up forms restyled from hardcoded gray/red classes to design tokens, so dark mode and the token language apply to auth. No provider, rider or admin screens exist in apps/web yet (Track A owns those routes), so there were no data tables to restyle.
+
 ### Added
 
 - Track B R3 (customer experience): sign-up now captures the customer's Kutus area, street and an optional landmark once at sign-up; providers page is a map + list split view with a glass overlay card for the selected provider (Google Maps when `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` is set, graceful area-chip fallback otherwise) and working search and sort; provider detail has a booking dialog with full price breakdown and M-Pesa STK Push payment simulation that confirms into a bookable order; new `/orders/[id]` tracker with the five customer stages, rider card, address with landmark, price breakdown and a star rating form.
