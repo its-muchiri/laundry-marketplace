@@ -8,6 +8,7 @@ Format: Added, Changed, Fixed, Removed, Security.
 
 ### Added
 
+- Track B R1 (app shell): shared `SiteHeader` (GlassNavbar with logo, links, auth buttons), `SiteFooter` (brand, customer/provider/rider columns, WhatsApp 0756 577 743), `MobileMenu` (full-screen bottom sheet), `ThemeToggle` (light/dark, persisted, flash-free init), and a global Ctrl/Cmd+K command palette (pages + providers). Home, how-it-works, providers and provider-detail pages now use the shared shell instead of duplicated header/footer markup.
 - Track B R0 (design system foundation, branch `redesign/cleanest-enterprise`):
   - Design tokens as CSS variables in `apps/web/src/styles/globals.css`: colour, radius, shadow, spacing, blur and motion; light and dark themes via the `.dark` class; reduced blur on mobile; solid fallback when backdrop-filter is unsupported; reduced-motion guards on decorative animation.
   - shadcn/ui core primitives in `apps/web/src/components/ui`: Button, Input, Card, Badge, Dialog, Drawer, Sheet, Tooltip, Toast, Tabs, Accordion, Command (Radix UI, cmdk, cva, clsx, tailwind-merge).

@@ -93,9 +93,10 @@ Presentation only: no changes to API contracts, route paths, data models, order 
 - [x] Brand assets: Cleanest Enterprise logo (owner-provided image at `apps/web/public/logo.jpeg`) wired into the layout and favicon; theme colours matched to the brand brief (white/off-white, deep navy, aqua/teal primary, one warm accent); owner to confirm exact hex codes
 - [x] A /design gallery route (development only) that shows every component, state and theme
 
-### R1: App shell
+### R1: App shell - DONE 2026-10-13
 
-- [ ] Navbar, mobile menu sheet, footer, page layout, theme toggle, global command palette
+- [x] Navbar, mobile menu sheet, footer, page layout, theme toggle, global command palette
+  - Shared `SiteHeader` (GlassNavbar), `SiteFooter` (with WhatsApp 0756 577 743), `MobileMenu` (bottom sheet), `ThemeToggle` (localStorage + flash-free init script), `CommandPalette` (Ctrl/Cmd+K, pages + providers). All pages use the shared shell; duplicated header/footer markup removed.
 
 ### R2: Marketing landing page
 
