@@ -121,6 +121,10 @@ Presentation only: no changes to API contracts, route paths, data models, order 
   - Login and sign-up forms restyled from hardcoded gray/red classes to design tokens (background, surface, foreground, border, error, primary-strong) so dark mode applies.
   - When Track A lands the provider/rider/admin screens, they should use the token utilities and glass sparingly (cards/overlays only, not table cells).
 
-### R5: Polish
+### R5: Polish - DONE 2026-10-13
 
-- [ ] Accessibility pass, performance pass on mobile, empty, loading and error states, final animation tuning
+- [x] Accessibility pass, performance pass on mobile, empty, loading and error states, final animation tuning
+  - Skip-to-content link (#main targets on all pages), real h1 on auth screens, focus-visible rings already global.
+  - loading=lazy on below-fold images (how-it-works steps, before/after slider).
+  - States covered: providers search empty state, Google Maps key-missing and script-failure fallbacks, booking validation, reduced-motion guards on all Reveal/Stagger/CountUp/orb animations.
+  - /design gallery now exhibits OrderTimeline and Rating too.
