@@ -2,8 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { brand } from '@/lib/brand';
 
-const whatsappUrl = 'https://wa.me/254756577743';
-
 const columns = [
   {
     heading: 'Customer',
@@ -45,17 +43,28 @@ export function SiteFooter() {
               <span className="text-xl font-bold">{brand.name}</span>
             </div>
             <p className="text-navy-foreground/70 text-sm mb-4">{brand.tagline}.</p>
-            <p className="text-navy-foreground/70 text-sm">
-              WhatsApp:{' '}
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-navy-foreground underline underline-offset-2"
-              >
-                0756 577 743
-              </a>
-            </p>
+            <ul className="space-y-2 text-navy-foreground/70 text-sm">
+              <li>
+                <a
+                  href={brand.contact.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-navy-foreground underline underline-offset-2"
+                >
+                  WhatsApp {brand.contact.whatsapp}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={brand.contact.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-navy-foreground underline underline-offset-2"
+                >
+                  @{brand.contact.instagram}
+                </a>
+              </li>
+            </ul>
           </div>
           {columns.map((column) => (
             <div key={column.heading}>

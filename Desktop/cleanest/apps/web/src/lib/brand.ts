@@ -18,6 +18,7 @@ export const brand = {
   contact: {
     whatsapp: '+254 756 577 743',
     whatsappUrl: 'https://wa.me/254756577743',
-    instagram: '',
+    instagram: 'cleanest_enterprise',
+    instagramUrl: 'https://www.instagram.com/cleanest_enterprise',
   },
 } as const;
