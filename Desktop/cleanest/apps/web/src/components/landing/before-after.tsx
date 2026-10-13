@@ -38,6 +38,7 @@ export function BeforeAfter() {
             <img
               src={afterSrc}
               alt="Clean, freshly folded laundry"
+              loading="lazy"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div
@@ -47,6 +48,7 @@ export function BeforeAfter() {
               <img
                 src={beforeSrc}
                 alt="Unwashed laundry piled up"
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover"
                 draggable={false}
               />

@@ -72,7 +72,7 @@ export default function HowItWorksPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
 
-      <main>
+      <main id="main">
         <section className="bg-gradient-to-b from-primary-soft to-background py-20 lg:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
@@ -88,11 +88,11 @@ export default function HowItWorksPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {steps.map((step, index) => (
               <div key={step.number} className={`mb-20 ${index % 2 === 1 ? 'flex-row-reverse' : ''} flex flex-col lg:flex-row items-center gap-12`}>
-                <div className="lg:w-1/2">
-                  <div className="aspect-video rounded-2xl overflow-hidden shadow-lifted">
-                    <img src={step.image} alt={step.title} className="w-full h-full object-cover" />
+                  <div className="lg:w-1/2">
+                    <div className="aspect-video rounded-2xl overflow-hidden shadow-lifted">
+                      <img src={step.image} alt={step.title} loading="lazy" className="w-full h-full object-cover" />
+                    </div>
                   </div>
-                </div>
                 <div className="lg:w-1/2 text-center lg:text-left">
                   <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
                     <div className="w-12 h-12 bg-primary-soft rounded-full flex items-center justify-center">

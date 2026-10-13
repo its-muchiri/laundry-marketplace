@@ -29,7 +29,7 @@ export default async function OrderPage({ params }: OrderPageProps) {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
-      <main className="py-8">
+      <main className="py-8" id="main">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <p className="text-sm text-foreground-muted mb-1">

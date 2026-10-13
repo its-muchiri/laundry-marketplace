@@ -105,7 +105,7 @@ export default function SignupForm() {
             </div>
             <span className="text-2xl font-bold tracking-tight">{brand.name}</span>
           </Link>
-          <h2 className="text-3xl font-bold text-foreground">Create your account</h2>
+          <h1 className="text-3xl font-bold text-foreground">Create your account</h1>
           <p className="mt-2 text-foreground-muted">Join thousands of Kenyans using {brand.name}</p>
         </div>
 

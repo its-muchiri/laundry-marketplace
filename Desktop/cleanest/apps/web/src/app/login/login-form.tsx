@@ -31,7 +31,7 @@ export default function LoginForm() {
             </div>
             <span className="text-2xl font-bold tracking-tight">{brand.name}</span>
           </Link>
-          <h2 className="text-3xl font-bold text-foreground">Welcome back</h2>
+          <h1 className="text-3xl font-bold text-foreground">Welcome back</h1>
           <p className="mt-2 text-foreground-muted">Sign in to your account to continue</p>
         </div>
 

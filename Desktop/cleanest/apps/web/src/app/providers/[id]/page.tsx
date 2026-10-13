@@ -31,7 +31,7 @@ export default async function ProviderPage({ params }: ProviderPageProps) {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
 
-      <main>
+      <main id="main">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Link href="/providers" className="inline-flex items-center text-sm text-foreground-muted hover:text-foreground mb-6">
             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

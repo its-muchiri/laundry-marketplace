@@ -31,7 +31,15 @@ export default function RootLayout({
         />
         <meta name="theme-color" content={brand.themeColor} />
       </head>
-      <body className="min-h-screen bg-background text-foreground">{children}</body>
+      <body className="min-h-screen bg-background text-foreground">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:font-medium focus:text-primary-foreground"
+        >
+          Skip to content
+        </a>
+        {children}
+      </body>
     </html>
   );
 }
