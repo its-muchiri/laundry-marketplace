@@ -98,11 +98,12 @@ Presentation only: no changes to API contracts, route paths, data models, order 
 - [x] Navbar, mobile menu sheet, footer, page layout, theme toggle, global command palette
   - Shared `SiteHeader` (GlassNavbar), `SiteFooter` (with WhatsApp 0756 577 743), `MobileMenu` (bottom sheet), `ThemeToggle` (localStorage + flash-free init script), `CommandPalette` (Ctrl/Cmd+K, pages + providers). All pages use the shared shell; duplicated header/footer markup removed.
 
-### R2: Marketing landing page
+### R2: Marketing landing page - DONE 2026-10-13
 
-- [ ] Hero with live order-status glass card, trust bar, services bento grid, how-it-works scroll line, enterprise section with quote form, pricing cards with toggle, tracking preview, before and after slider, testimonials, FAQ, final call-to-action
-- [ ] Kutus content: providers across Ngomongo, Diaspora, Gitwe, Mjini, Soko, Joslian, Executive, Leisure, Spenza, Summer Gardens and Maanet; placeholder orders and availability; notifications at different sections (rider availability, laundry companies free); contact via WhatsApp 0756577743 and Instagram (owner to provide handle)
-- [ ] Pricing display: delivery fee KES 50-150 depending on location and load; average KES 40 per kg with different provider rates
+- [x] Hero with live order-status glass card, trust bar, services bento grid, how-it-works scroll line, enterprise section with quote form, pricing cards with toggle, tracking preview, before and after slider, testimonials, FAQ, final call-to-action
+- [x] Kutus content: providers across Ngomongo, Diaspora, Gitwe, Mjini, Soko, Joslian, Executive, Leisure, Spenza, Summer Gardens and Maanet; placeholder orders and availability; notifications at different sections (rider availability, laundry companies free); contact via WhatsApp 0756577743 and Instagram (owner to provide handle)
+- [x] Pricing display: delivery fee KES 50-150 depending on location and load; average KES 40 per kg with different provider rates
+  - Built as `apps/web/src/components/landing/*` (hero, trust-bar, services-bento, how-it-works-line, enterprise, pricing, tracking-preview, before-after, testimonials, faq, final-cta) assembled in `app/page.tsx`. Instagram link still pending the owner's handle.
 
 ### R3: Customer experience
 

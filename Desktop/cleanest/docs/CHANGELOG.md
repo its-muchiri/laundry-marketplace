@@ -8,6 +8,7 @@ Format: Added, Changed, Fixed, Removed, Security.
 
 ### Added
 
+- Track B R2 (marketing landing page): home page rebuilt as the marketing site with hero (live order-status glass card, area search), trust bar with count-up stats, services bento grid, how-it-works scroll line, enterprise section with WhatsApp-prefilled quote form, pricing cards with one-off/weekly toggle, interactive five-stage tracking preview, before/after slider, testimonials, FAQ accordion and final CTA. Kutus content, KES 40/kg average and KES 50-150 delivery range used throughout.
 - Track B R1 (app shell): shared `SiteHeader` (GlassNavbar with logo, links, auth buttons), `SiteFooter` (brand, customer/provider/rider columns, WhatsApp 0756 577 743), `MobileMenu` (full-screen bottom sheet), `ThemeToggle` (light/dark, persisted, flash-free init), and a global Ctrl/Cmd+K command palette (pages + providers). Home, how-it-works, providers and provider-detail pages now use the shared shell instead of duplicated header/footer markup.
 - Track B R0 (design system foundation, branch `redesign/cleanest-enterprise`):
   - Design tokens as CSS variables in `apps/web/src/styles/globals.css`: colour, radius, shadow, spacing, blur and motion; light and dark themes via the `.dark` class; reduced blur on mobile; solid fallback when backdrop-filter is unsupported; reduced-motion guards on decorative animation.
