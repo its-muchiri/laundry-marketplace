@@ -96,7 +96,7 @@ export default function SignupForm() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-background flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2 mb-8">
@@ -105,13 +105,13 @@ export default function SignupForm() {
             </div>
             <span className="text-2xl font-bold tracking-tight">{brand.name}</span>
           </Link>
-          <h2 className="text-3xl font-bold text-gray-900">Create your account</h2>
-          <p className="mt-2 text-gray-600">Join thousands of Kenyans using {brand.name}</p>
+          <h2 className="text-3xl font-bold text-foreground">Create your account</h2>
+          <p className="mt-2 text-foreground-muted">Join thousands of Kenyans using {brand.name}</p>
         </div>
 
         <div className="card p-8">
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-3">I want to sign up as a:</label>
+            <label className="block text-sm font-medium text-foreground mb-3">I want to sign up as a:</label>
             <div className="grid grid-cols-3 gap-3">
               {roles.map((r) => (
                 <button
@@ -121,7 +121,7 @@ export default function SignupForm() {
                   className={`relative p-4 rounded-lg border-2 transition-all ${
                     role === r.value
                       ? 'border-primary-600 bg-primary-50'
-                      : 'border-gray-200 hover:border-gray-300'
+                      : 'border-border hover:border-border-strong'
                   }`}
                 >
                   <input
@@ -133,11 +133,11 @@ export default function SignupForm() {
                     className="sr-only"
                   />
                   <div className="text-center">
-                    <div className={`mx-auto mb-2 ${role === r.value ? 'text-primary-600' : 'text-gray-400'}`}>
+                    <div className={`mx-auto mb-2 ${role === r.value ? 'text-primary-strong' : 'text-foreground-muted'}`}>
                       {r.icon}
                     </div>
-                    <div className="font-medium text-gray-900">{r.label}</div>
-                    <div className="text-xs text-gray-500 mt-1">{r.description}</div>
+                    <div className="font-medium text-foreground">{r.label}</div>
+                    <div className="text-xs text-foreground-muted mt-1">{r.description}</div>
                   </div>
                 </button>
               ))}
@@ -146,14 +146,14 @@ export default function SignupForm() {
 
           <form onSubmit={handleSubmit} className="space-y-4" noValidate>
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm" role="alert">
+              <div className="bg-error/10 border border-error/30 text-error px-4 py-3 rounded-lg text-sm" role="alert">
                 {error}
               </div>
             )}
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-1">
                   First Name
                 </label>
                 <input
@@ -168,7 +168,7 @@ export default function SignupForm() {
                 />
               </div>
               <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-1">
                   Last Name
                 </label>
                 <input
@@ -185,7 +185,7 @@ export default function SignupForm() {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1">
                 Email
               </label>
               <input
@@ -202,7 +202,7 @@ export default function SignupForm() {
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1">
                 Phone Number
               </label>
               <input
@@ -219,7 +219,7 @@ export default function SignupForm() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="password" className="block text-sm font-medium text-foreground mb-1">
                 Password
               </label>
               <input
@@ -234,11 +234,11 @@ export default function SignupForm() {
                 className="input-field"
                 placeholder="••••••••"
               />
-              <p className="mt-1 text-xs text-gray-500">At least 8 characters</p>
+              <p className="mt-1 text-xs text-foreground-muted">At least 8 characters</p>
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-foreground mb-1">
                 Confirm Password
               </label>
               <input
@@ -262,7 +262,7 @@ export default function SignupForm() {
                 </p>
                 <div className="space-y-4">
                   <div>
-                    <label htmlFor="area" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="area" className="block text-sm font-medium text-foreground mb-1">
                       Area
                     </label>
                     <select
@@ -279,7 +279,7 @@ export default function SignupForm() {
                     </select>
                   </div>
                   <div>
-                    <label htmlFor="street" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="street" className="block text-sm font-medium text-foreground mb-1">
                       Street or building
                     </label>
                     <input
@@ -293,8 +293,8 @@ export default function SignupForm() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="landmark" className="block text-sm font-medium text-gray-700 mb-1">
-                      Landmark <span className="text-gray-500 font-normal">(optional)</span>
+                    <label htmlFor="landmark" className="block text-sm font-medium text-foreground mb-1">
+                      Landmark <span className="text-foreground-muted font-normal">(optional)</span>
                     </label>
                     <input
                       id="landmark"
@@ -304,7 +304,7 @@ export default function SignupForm() {
                       className="input-field"
                       placeholder="e.g. near the blue kiosk"
                     />
-                    <p className="mt-2 text-xs text-gray-500">
+                    <p className="mt-2 text-xs text-foreground-muted">
                       We store your address and coordinates once at
                       sign-up, so you never need to pin your location
                       again for each booking.
@@ -320,13 +320,13 @@ export default function SignupForm() {
                 name="terms"
                 type="checkbox"
                 required
-                className="mt-1 w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+                className="mt-1 w-4 h-4 text-primary-strong border-border rounded focus:ring-primary-strong"
               />
-              <label htmlFor="terms" className="text-sm text-gray-600">
+              <label htmlFor="terms" className="text-sm text-foreground-muted">
                 I agree to the{' '}
-                <Link href="/terms" className="text-primary-600 hover:underline">Terms of Service</Link>
+                <Link href="/terms" className="text-primary-strong hover:underline">Terms of Service</Link>
                 {' '}and{' '}
-                <Link href="/privacy" className="text-primary-600 hover:underline">Privacy Policy</Link>
+                <Link href="/privacy" className="text-primary-strong hover:underline">Privacy Policy</Link>
               </label>
             </div>
 
@@ -339,9 +339,9 @@ export default function SignupForm() {
             </button>
           </form>
 
-          <p className="mt-6 text-center text-sm text-gray-600">
+          <p className="mt-6 text-center text-sm text-foreground-muted">
             Already have an account?{' '}
-            <Link href="/login" className="font-medium text-primary-600 hover:text-primary-500">
+            <Link href="/login" className="font-medium text-primary-strong hover:text-primary">
               Sign in
             </Link>
           </p>

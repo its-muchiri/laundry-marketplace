@@ -22,7 +22,7 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-background flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2 mb-8">
@@ -31,20 +31,20 @@ export default function LoginForm() {
             </div>
             <span className="text-2xl font-bold tracking-tight">{brand.name}</span>
           </Link>
-          <h2 className="text-3xl font-bold text-gray-900">Welcome back</h2>
-          <p className="mt-2 text-gray-600">Sign in to your account to continue</p>
+          <h2 className="text-3xl font-bold text-foreground">Welcome back</h2>
+          <p className="mt-2 text-foreground-muted">Sign in to your account to continue</p>
         </div>
 
         <div className="card p-8">
           <form onSubmit={handleSubmit} className="space-y-6" noValidate>
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm" role="alert">
+              <div className="bg-error/10 border border-error/30 text-error px-4 py-3 rounded-lg text-sm" role="alert">
                 {error}
               </div>
             )}
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1">
                 Email or Phone
               </label>
               <input
@@ -62,10 +62,10 @@ export default function LoginForm() {
 
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="password" className="block text-sm font-medium text-foreground">
                   Password
                 </label>
-                <Link href="/forgot-password" className="text-sm text-primary-600 hover:text-primary-500">
+                <Link href="/forgot-password" className="text-sm text-primary-strong hover:text-primary">
                   Forgot password?
                 </Link>
               </div>
@@ -88,9 +88,9 @@ export default function LoginForm() {
                   type="checkbox"
                   checked={remember}
                   onChange={(e) => setRemember(e.target.checked)}
-                  className="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+                  className="w-4 h-4 text-primary-strong border-border rounded focus:ring-primary-strong"
                 />
-                <span className="text-sm text-gray-600">Remember me</span>
+                <span className="text-sm text-foreground-muted">Remember me</span>
               </label>
             </div>
 
@@ -106,10 +106,10 @@ export default function LoginForm() {
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
+                <div className="w-full border-t border-border" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                <span className="px-2 bg-surface text-foreground-muted">Or continue with</span>
               </div>
             </div>
 
@@ -132,9 +132,9 @@ export default function LoginForm() {
             </div>
           </div>
 
-          <p className="mt-6 text-center text-sm text-gray-600">
+          <p className="mt-6 text-center text-sm text-foreground-muted">
             Don&apos;t have an account?{' '}
-            <Link href="/signup" className="font-medium text-primary-600 hover:text-primary-500">
+            <Link href="/signup" className="font-medium text-primary-strong hover:text-primary">
               Sign up
             </Link>
           </p>
