@@ -3,9 +3,24 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { MapPin } from 'lucide-react';
 import { brand } from '@/lib/brand';
 
 type Role = 'customer' | 'provider' | 'rider';
+
+const areas = [
+  'Ngomongo',
+  'Diaspora',
+  'Gitwe',
+  'Mjini',
+  'Soko',
+  'Joslian',
+  'Executive',
+  'Leisure',
+  'Spenza',
+  'Summer Gardens',
+  'Maanet',
+];
 
 export default function SignupForm() {
   const [role, setRole] = useState<Role>('customer');
@@ -16,6 +31,11 @@ export default function SignupForm() {
     phone: '',
     password: '',
     confirmPassword: '',
+  });
+  const [address, setAddress] = useState({
+    area: '',
+    street: '',
+    landmark: '',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -233,6 +253,66 @@ export default function SignupForm() {
                 placeholder="••••••••"
               />
             </div>
+
+            {role === 'customer' && (
+              <div className="border border-border rounded-lg p-4 bg-surface">
+                <p className="flex items-center gap-2 text-sm font-medium mb-4">
+                  <MapPin className="h-4 w-4 text-primary-strong" />
+                  Where should riders pick you up?
+                </p>
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="area" className="block text-sm font-medium text-gray-700 mb-1">
+                      Area
+                    </label>
+                    <select
+                      id="area"
+                      value={address.area}
+                      onChange={(e) => setAddress({ ...address, area: e.target.value })}
+                      required
+                      className="input-field"
+                    >
+                      <option value="">Select your area in Kutus</option>
+                      {areas.map((area) => (
+                        <option key={area} value={area}>{area}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="street" className="block text-sm font-medium text-gray-700 mb-1">
+                      Street or building
+                    </label>
+                    <input
+                      id="street"
+                      type="text"
+                      value={address.street}
+                      onChange={(e) => setAddress({ ...address, street: e.target.value })}
+                      required
+                      className="input-field"
+                      placeholder="Ngomongo Shopping Centre"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="landmark" className="block text-sm font-medium text-gray-700 mb-1">
+                      Landmark <span className="text-gray-500 font-normal">(optional)</span>
+                    </label>
+                    <input
+                      id="landmark"
+                      type="text"
+                      value={address.landmark}
+                      onChange={(e) => setAddress({ ...address, landmark: e.target.value })}
+                      className="input-field"
+                      placeholder="e.g. near the blue kiosk"
+                    />
+                    <p className="mt-2 text-xs text-gray-500">
+                      We store your address and coordinates once at
+                      sign-up, so you never need to pin your location
+                      again for each booking.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div className="flex items-start gap-2">
               <input
