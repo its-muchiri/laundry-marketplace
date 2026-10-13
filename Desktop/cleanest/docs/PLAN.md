@@ -77,3 +77,40 @@ Rule: work on ONE milestone at a time. Do not start the next until the owner app
 ## Later (not now)
 
 Silver and Gold tiers, polygons, scored dispatch, card payments, live GPS map, WhatsApp, featured placements, Swahili.
+
+## Track B: Redesign (Cleanest Enterprise)
+
+Branch: `redesign/cleanest-enterprise`. Track B owns design tokens, global styles, `apps/web/components/ui`, the marketing pages and the visual layer of existing screens. Track A owns apps/api, packages/shared, database migrations and business logic. Merge main into this branch at the end of every redesign milestone and fix conflicts immediately.
+
+Presentation only: no changes to API contracts, route paths, data models, order states, pricing rules, auth or payment code, or any test IDs or accessible names. All existing tests must keep passing. Allowed stack: Tailwind CSS, shadcn/ui, Motion, lucide-react (ask owner before adding anything else). Brand text lives in one file (`apps/web/lib/brand.ts`).
+
+### R0: Design system foundation - DONE 2026-10-13
+
+- [x] Design tokens as CSS variables (colour, radius, shadow, spacing, blur, motion), light and dark
+- [x] Core primitives: Button, Input, Card, Badge, Dialog, Drawer, Sheet, Tooltip, Toast, Tabs, Accordion, Command
+- [x] Glass components: GlassCard, GlassNavbar, ReededGlass, GlowOrbs
+- [x] Motion helpers: reveal, stagger, count-up, hover sheen, all reduced-motion safe
+- [x] Brand assets: Cleanest Enterprise logo (owner-provided image at `apps/web/public/logo.jpeg`) wired into the layout and favicon; theme colours matched to the brand brief (white/off-white, deep navy, aqua/teal primary, one warm accent); owner to confirm exact hex codes
+- [x] A /design gallery route (development only) that shows every component, state and theme
+
+### R1: App shell
+
+- [ ] Navbar, mobile menu sheet, footer, page layout, theme toggle, global command palette
+
+### R2: Marketing landing page
+
+- [ ] Hero with live order-status glass card, trust bar, services bento grid, how-it-works scroll line, enterprise section with quote form, pricing cards with toggle, tracking preview, before and after slider, testimonials, FAQ, final call-to-action
+- [ ] Kutus content: providers across Ngomongo, Diaspora, Gitwe, Mjini, Soko, Joslian, Executive, Leisure, Spenza, Summer Gardens and Maanet; placeholder orders and availability; notifications at different sections (rider availability, laundry companies free); contact via WhatsApp 0756577743 and Instagram (owner to provide handle)
+- [ ] Pricing display: delivery fee KES 50-150 depending on location and load; average KES 40 per kg with different provider rates
+
+### R3: Customer experience
+
+- [ ] Sign-up, address pin with landmark note, provider list and map with glass overlays, provider detail, booking dialog, price breakdown, payment, order tracker (5 customer stages: Booked, Picked up, Cleaning, On the way, Delivered), rating
+
+### R4: Provider, rider and admin screens
+
+- [ ] Restyle only the screens that exist. Dense data tables stay clean and readable, with glass used sparingly (cards and overlays, not table cells).
+
+### R5: Polish
+
+- [ ] Accessibility pass, performance pass on mobile, empty, loading and error states, final animation tuning

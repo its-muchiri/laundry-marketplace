@@ -8,7 +8,16 @@ Format: Added, Changed, Fixed, Removed, Security.
 
 ### Added
 
-- Project documentation: CLAUDE.md, AGENTS.md, README.md, SPEC.md, PLAN.md, ARCHITECTURE.md, DESIGN.md, SECURITY.md, DECISIONS.md.
+- Track B R0 (design system foundation, branch `redesign/cleanest-enterprise`):
+  - Design tokens as CSS variables in `apps/web/src/styles/globals.css`: colour, radius, shadow, spacing, blur and motion; light and dark themes via the `.dark` class; reduced blur on mobile; solid fallback when backdrop-filter is unsupported; reduced-motion guards on decorative animation.
+  - shadcn/ui core primitives in `apps/web/src/components/ui`: Button, Input, Card, Badge, Dialog, Drawer, Sheet, Tooltip, Toast, Tabs, Accordion, Command (Radix UI, cmdk, cva, clsx, tailwind-merge).
+  - Glass components: GlassCard, GlassNavbar, ReededGlass, GlowOrbs.
+  - Motion helpers: Reveal, Stagger, CountUp, HoverSheen (200-600ms, reduced-motion safe).
+  - Brand source of truth `apps/web/lib/brand.ts`; app rebranded from LaundryKE to Cleanest Enterprise; provider dataset moved to Kutus areas (Ngomongo, Diaspora, Gitwe, Mjini, Soko, Joslian, Executive, Leisure, Spenza, Summer Gardens, Maanet); pricing display shows average KES 40/kg with provider variation and delivery fee as the KES 50-150 range.
+  - `/design` gallery route showing every component, state and theme (development only).
+- Project documentation converted from .docx to markdown (docs/*.md, plus CLAUDE.md at the repo root).
+- Track B: Redesign (Cleanest Enterprise) milestones R0-R5 in docs/PLAN.md, with decision D13.
+- Cleanest Enterprise brand image (logo and favicon artwork, owner-provided) at apps/web/public/logo.jpeg; wired into layout and favicon in R0.
 
 ## [0.1.0] - YYYY-MM-DD
 
