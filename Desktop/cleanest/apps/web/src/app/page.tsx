@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { brand } from '@/lib/brand';
 import { providers, formatPrice, formatDeliveryFeeRange } from './providers/data';
+import { SiteHeader } from '@/components/layout/site-header';
+import { SiteFooter } from '@/components/layout/site-footer';
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
@@ -43,24 +44,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="bg-surface-raised/90 shadow-sm sticky top-0 z-50 backdrop-blur-md">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-2">
-              <div className="relative h-8 w-8 overflow-hidden rounded-lg">
-                <Image src={brand.logo} alt={`${brand.name} logo`} fill className="object-cover" />
-              </div>
-              <span className="text-xl font-bold tracking-tight">{brand.name}</span>
-            </div>
-            <div className="hidden md:flex items-center gap-6">
-              <Link href="/providers" className="text-foreground-muted hover:text-primary-strong font-medium">{brand.nav.providers}</Link>
-              <Link href="/how-it-works" className="text-foreground-muted hover:text-primary-strong font-medium">{brand.nav.howItWorks}</Link>
-              <Link href="/login" className="btn-primary">{brand.nav.login}</Link>
-              <Link href="/signup" className="btn-secondary">{brand.nav.signup}</Link>
-            </div>
-          </div>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <main>
         <section className="relative bg-gradient-to-b from-primary-soft to-background py-20 lg:py-32">
@@ -264,49 +248,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer className="bg-navy text-navy-foreground py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="relative h-8 w-8 overflow-hidden rounded-lg">
-                  <Image src={brand.logo} alt={`${brand.name} logo`} fill className="object-cover" />
-                </div>
-                <span className="text-xl font-bold">{brand.name}</span>
-              </div>
-              <p className="text-navy-foreground/70 text-sm">{brand.tagline}.</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Customer</h4>
-              <ul className="space-y-2 text-navy-foreground/70 text-sm">
-                <li><Link href="/providers" className="hover:text-navy-foreground">Find Providers</Link></li>
-                <li><Link href="/pricing" className="hover:text-navy-foreground">Pricing</Link></li>
-                <li><Link href="/faq" className="hover:text-navy-foreground">FAQ</Link></li>
-                <li><Link href="/support" className="hover:text-navy-foreground">Support</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Provider</h4>
-              <ul className="space-y-2 text-navy-foreground/70 text-sm">
-                <li><Link href="/provider/signup" className="hover:text-navy-foreground">Become a Provider</Link></li>
-                <li><Link href="/provider/dashboard" className="hover:text-navy-foreground">Provider Dashboard</Link></li>
-                <li><Link href="/provider/terms" className="hover:text-navy-foreground">Terms</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Rider</h4>
-              <ul className="space-y-2 text-navy-foreground/70 text-sm">
-                <li><Link href="/rider/signup" className="hover:text-navy-foreground">Join as Rider</Link></li>
-                <li><Link href="/rider/app" className="hover:text-navy-foreground">Rider App</Link></li>
-                <li><Link href="/rider/terms" className="hover:text-navy-foreground">Terms</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-navy-soft mt-8 pt-8 text-center text-navy-foreground/70 text-sm">
-            <p>{brand.copyright()}</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import ProviderBooking from './provider-booking';
 import { getProvider } from '../data';
 import { brand } from '@/lib/brand';
+import { SiteHeader } from '@/components/layout/site-header';
+import { SiteFooter } from '@/components/layout/site-footer';
 
 interface ProviderPageProps {
   params: Promise<{ id: string }>;
@@ -28,25 +29,7 @@ export default async function ProviderPage({ params }: ProviderPageProps) {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="bg-surface-raised/90 shadow-sm sticky top-0 z-50 backdrop-blur-md">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-2">
-              <div className="relative h-8 w-8 overflow-hidden rounded-lg">
-                <Image src={brand.logo} alt={`${brand.name} logo`} fill className="object-cover" />
-              </div>
-              <span className="text-xl font-bold tracking-tight">{brand.name}</span>
-            </div>
-            <div className="hidden md:flex items-center gap-6">
-              <Link href="/" className="text-foreground-muted hover:text-primary-strong font-medium">{brand.nav.home}</Link>
-              <Link href="/providers" className="text-primary-strong font-medium">{brand.nav.providers}</Link>
-              <Link href="/how-it-works" className="text-foreground-muted hover:text-primary-strong font-medium">{brand.nav.howItWorks}</Link>
-              <Link href="/login" className="btn-primary">{brand.nav.login}</Link>
-              <Link href="/signup" className="btn-secondary">{brand.nav.signup}</Link>
-            </div>
-          </div>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <main>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -182,11 +165,7 @@ export default async function ProviderPage({ params }: ProviderPageProps) {
         </div>
       </main>
 
-      <footer className="bg-navy text-navy-foreground py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-navy-foreground/70 text-sm">
-          <p>{brand.copyright()}</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
