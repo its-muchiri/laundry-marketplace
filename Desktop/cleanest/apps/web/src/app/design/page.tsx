@@ -65,6 +65,8 @@ import { CountUp } from '@/components/motion/count-up';
 import { Reveal } from '@/components/motion/reveal';
 import { Sheen } from '@/components/motion/sheen';
 import { Stagger, StaggerItem } from '@/components/motion/stagger';
+import { OrderTimeline } from '@/components/order/order-timeline';
+import { Rating } from '@/components/order/rating';
 import { brand } from '@/lib/brand';
 import { cn } from '@/lib/utils';
 
@@ -398,6 +400,25 @@ export default function DesignGalleryPage() {
               </StaggerItem>
             ))}
           </Stagger>
+        </section>
+
+        <section>
+          <h2 className="mb-4 text-2xl font-bold tracking-tight">
+            Order components
+          </h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            <Card className="p-6">
+              <h3 className="font-semibold mb-4">OrderTimeline</h3>
+              <OrderTimeline
+                currentStage={2}
+                timestamps={['Today, 9:12 AM', 'Today, 9:48 AM', null, null, null]}
+              />
+            </Card>
+            <Card className="p-6">
+              <h3 className="font-semibold mb-4">Rating</h3>
+              <Rating onSubmit={() => {}} />
+            </Card>
+          </div>
         </section>
 
         <footer className="pb-12 text-center text-sm text-foreground-muted">
