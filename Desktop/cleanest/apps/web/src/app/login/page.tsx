@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import LoginForm from './login-form';
+import { brand } from '@/lib/brand';
 
 export const metadata: Metadata = {
-  title: 'Login - Laundry Marketplace Kenya',
-  description: 'Sign in to your LaundryKE account',
+  title: `Login - ${brand.name}`,
+  description: `Sign in to your ${brand.name} account`,
 };
 
 export default function LoginPage() {

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { ProviderData } from '../data';
+import { ProviderData, formatPrice, DELIVERY_FEE_MIN_CENTS, DELIVERY_FEE_MAX_CENTS, SERVICE_FEE_CENTS } from '../data';
 
 interface ProviderBookingProps {
   provider: ProviderData;
@@ -14,10 +14,6 @@ export default function ProviderBooking({ provider }: ProviderBookingProps) {
   const [pickupDate, setPickupDate] = useState('');
   const [pickupTime, setPickupTime] = useState('');
 
-  const formatPrice = (cents: number) => {
-    return `KES ${(cents / 100).toFixed(2)}`;
-  };
-
   const estimatedPrice = estimatedWeight * provider.pricePerKg;
 
   const tomorrow = new Date();
@@ -28,10 +24,10 @@ export default function ProviderBooking({ provider }: ProviderBookingProps) {
     <div className="lg:col-span-1">
       <div className="card sticky top-24">
         <div className="p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Book Pickup</h2>
+          <h2 className="text-lg font-semibold tracking-tight mb-4">Book Pickup</h2>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Service Type</label>
+              <label className="block text-sm font-medium text-foreground mb-1">Service Type</label>
               <select
                 value={selectedService}
                 onChange={(e) => setSelectedService(e.target.value)}
@@ -44,7 +40,7 @@ export default function ProviderBooking({ provider }: ProviderBookingProps) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 Estimated Weight: {estimatedWeight} kg
               </label>
               <input
@@ -53,16 +49,17 @@ export default function ProviderBooking({ provider }: ProviderBookingProps) {
                 max="20"
                 value={estimatedWeight}
                 onChange={(e) => setEstimatedWeight(Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary-600"
+                className="w-full h-2 bg-border rounded-lg appearance-none cursor-pointer accent-primary"
+                aria-label="Estimated weight in kilograms"
               />
-              <div className="flex justify-between text-xs text-gray-500 mt-1">
+              <div className="flex justify-between text-xs text-foreground-muted mt-1">
                 <span>2 kg</span>
                 <span>20 kg</span>
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Pickup Date</label>
+              <label className="block text-sm font-medium text-foreground mb-1">Pickup Date</label>
               <input
                 type="date"
                 value={pickupDate}
@@ -73,7 +70,7 @@ export default function ProviderBooking({ provider }: ProviderBookingProps) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Pickup Time</label>
+              <label className="block text-sm font-medium text-foreground mb-1">Pickup Time</label>
               <select value={pickupTime} onChange={(e) => setPickupTime(e.target.value)} className="input-field">
                 <option value="">Select time</option>
                 <option value="08:00-10:00">8:00 AM - 10:00 AM</option>
@@ -84,30 +81,32 @@ export default function ProviderBooking({ provider }: ProviderBookingProps) {
               </select>
             </div>
 
-            <div className="border-t border-gray-200 pt-4 space-y-2">
+            <div className="border-t border-border pt-4 space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Laundry ({estimatedWeight} kg × {formatPrice(provider.pricePerKg)})</span>
-                <span className="text-gray-900">{formatPrice(estimatedPrice)}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Delivery Fee (Pickup + Return)</span>
-                <span className="text-gray-900">{formatPrice(20000)}</span>
+                <span className="text-foreground-muted">Laundry ({estimatedWeight} kg × {formatPrice(provider.pricePerKg)})</span>
+                <span className="tracking-tight">{formatPrice(estimatedPrice)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Service Fee</span>
-                <span className="text-gray-900">{formatPrice(2000)}</span>
+                <span className="text-foreground-muted">Delivery Fee (Pickup + Return)</span>
+                <span className="tracking-tight">{formatPrice(DELIVERY_FEE_MIN_CENTS)} - {formatPrice(DELIVERY_FEE_MAX_CENTS)}</span>
               </div>
-              <div className="flex justify-between text-sm border-t border-gray-200 pt-2">
-                <span className="font-semibold text-gray-900">Estimated Total</span>
-                <span className="font-semibold text-gray-900">{formatPrice(estimatedPrice + 22000)}</span>
+              <div className="flex justify-between text-sm">
+                <span className="text-foreground-muted">Service Fee</span>
+                <span className="tracking-tight">{formatPrice(SERVICE_FEE_CENTS)}</span>
               </div>
-              <p className="text-xs text-gray-500 text-center">Final price confirmed after weighing. 15% variance threshold applies.</p>
+              <div className="flex justify-between text-sm border-t border-border pt-2">
+                <span className="font-semibold tracking-tight">Estimated Total</span>
+                <span className="font-semibold tracking-tight">
+                  {formatPrice(estimatedPrice + SERVICE_FEE_CENTS + DELIVERY_FEE_MIN_CENTS)} - {formatPrice(estimatedPrice + SERVICE_FEE_CENTS + DELIVERY_FEE_MAX_CENTS)}
+                </span>
+              </div>
+              <p className="text-xs text-foreground-muted text-center">Final price confirmed after weighing. 15% variance threshold applies.</p>
             </div>
 
             <button className="btn-primary w-full py-3 text-lg" disabled={!pickupDate || !pickupTime}>
               Book Pickup
             </button>
-            <p className="text-xs text-gray-500 text-center">Pay on delivery with M-Pesa or Card</p>
+            <p className="text-xs text-foreground-muted text-center">Pay on delivery with M-Pesa or Card</p>
           </div>
         </div>
       </div>

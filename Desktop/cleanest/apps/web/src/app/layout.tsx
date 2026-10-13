@@ -1,13 +1,18 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
+import { brand } from '@/lib/brand';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'Laundry Marketplace Kenya',
-  description: 'Book nearby laundry providers. Riders collect and return your clothes.',
-  keywords: ['laundry', 'kenya', 'marketplace', 'delivery', 'mpesa'],
+  title: `${brand.name} - ${brand.tagline}`,
+  description: brand.description,
+  keywords: ['laundry', 'dry cleaning', 'kenya', 'kutus', 'marketplace', 'delivery', 'mpesa'],
+  icons: {
+    icon: brand.logo,
+    apple: brand.logo,
+  },
 };
 
 export default function RootLayout({
@@ -16,14 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} antialiased`}>
+    <html lang="en" className={`${inter.variable} antialiased`} suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#16a34a" />
+        <meta name="theme-color" content={brand.themeColor} />
       </head>
-      <body className="min-h-screen bg-gray-50">{children}</body>
+      <body className="min-h-screen bg-background text-foreground">{children}</body>
     </html>
   );
 }
