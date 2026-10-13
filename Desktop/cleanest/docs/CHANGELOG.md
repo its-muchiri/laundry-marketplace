@@ -8,6 +8,11 @@ Format: Added, Changed, Fixed, Removed, Security.
 
 ### Changed
 
+- Contact: owner provided the Instagram profile (@cleanest_enterprise); footer contact block now lists WhatsApp and Instagram from `brand.contact`. Google Maps browser key added to the gitignored `.env` as `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY`, so the providers page loads the live map locally.
+- Deployed the Track B redesign (R0-R5) to Vercel production: https://web-sigma-dun-83.vercel.app. `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` set on the project as `--type config` (decision D14) so the production build includes the live map.
+
+### Changed
+
 - Track B R5 (polish): skip-to-content link with `#main` targets on every page, real `h1` elements on the auth screens, `loading="lazy"` on below-fold images, and the `/design` gallery now exhibits the OrderTimeline and Rating components. Reduced-motion guards already cover all Reveal/Stagger/CountUp/orb animations; providers search has an empty state and the map has key-missing and script-failure fallbacks. The web workspace's jest script now passes with no tests (matching apps/rider); `packages/shared` test failure is pre-existing and owned by Track A.
 - Track B R4: login and sign-up forms restyled from hardcoded gray/red classes to design tokens, so dark mode and the token language apply to auth. No provider, rider or admin screens exist in apps/web yet (Track A owns those routes), so there were no data tables to restyle.
 

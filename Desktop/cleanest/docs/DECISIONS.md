@@ -80,6 +80,12 @@ Date: 2026-10-13. Status: accepted.
 
 Reason: the owner is rebranding from LaundryKE to Cleanest Enterprise, a premium, tech-driven laundry and dry cleaning brand for households and businesses (hotels, Airbnbs, restaurants, clinics, offices). The visual language is clean, calm and modern like a high-end SaaS product: white and off-white surfaces, deep navy text and dark sections, a fresh aqua/teal primary accent and one small warm accent, all as CSS variables with light and dark mode. Glassmorphism (translucent panels, backdrop blur, 1px semi-transparent border, faint top highlight) on the navbar, floating cards, booking panel and pricing cards, plus a reusable ReededGlass component, glow orbs and Motion animations (200-600ms, reduced-motion safe). Allowed stack: Tailwind CSS, shadcn/ui, Motion, lucide-react. Brand name, tagline and nav labels are centralised in apps/web/lib/brand.ts.
 
+## D14: Google Maps browser key as public config
+
+Date: 2026-10-13. Status: accepted.
+
+Reason: the providers map needs the Google Maps JavaScript API in the browser, so the key must ship to the client. The owner provided the browser key (also in the gitignored .env as NEXT_PUBLIC_GOOGLE_MAPS_API_KEY). On Vercel it is stored as `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` with `--type config` (not `--type secret`) because NEXT_PUBLIC_ values are exposed to visitors by design; the key is restricted by HTTP referrer and Maps API at the Google Cloud console. The providers page falls back to an area-chip panel when the key is absent, so local dev without a key still works.
+
 ## Open decisions
 
 - ORM or query layer that works well with PostGIS.
