@@ -96,7 +96,7 @@ export function ProvidersMap({
     script.addEventListener('load', load);
     script.addEventListener('error', () => setScriptFailed(true));
     document.head.appendChild(script);
-  }, [API_KEY, scriptFailed, providers, onSelect]);
+  }, [scriptFailed, providers, onSelect]);
 
   useEffect(() => {
     if (!API_KEY || !window.google || !mapInstance.current) return;
@@ -109,7 +109,7 @@ export function ProvidersMap({
         new window.google.maps.LatLng(position.lat, position.lng)
       );
     }
-  }, [selectedId, providers, API_KEY]);
+  }, [selectedId, providers]);
 
   const showFallback = !API_KEY || scriptFailed;
 
