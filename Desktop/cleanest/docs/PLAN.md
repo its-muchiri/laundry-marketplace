@@ -105,9 +105,14 @@ Presentation only: no changes to API contracts, route paths, data models, order 
 - [x] Pricing display: delivery fee KES 50-150 depending on location and load; average KES 40 per kg with different provider rates
   - Built as `apps/web/src/components/landing/*` (hero, trust-bar, services-bento, how-it-works-line, enterprise, pricing, tracking-preview, before-after, testimonials, faq, final-cta) assembled in `app/page.tsx`. Instagram link still pending the owner's handle.
 
-### R3: Customer experience
+### R3: Customer experience - DONE 2026-10-13
 
-- [ ] Sign-up, address pin with landmark note, provider list and map with glass overlays, provider detail, booking dialog, price breakdown, payment, order tracker (5 customer stages: Booked, Picked up, Cleaning, On the way, Delivered), rating
+- [x] Sign-up, address pin with landmark note, provider list and map with glass overlays, provider detail, booking dialog, price breakdown, payment, order tracker (5 customer stages: Booked, Picked up, Cleaning, On the way, Delivered), rating
+  - Sign-up: customers pick Kutus area, street and optional landmark; stored once at sign-up.
+  - Providers page: map + list split view with glass overlay card; Google Maps loads when NEXT_PUBLIC_GOOGLE_MAPS_API_KEY is set, otherwise a graceful area-chip fallback; search and sort are functional.
+  - Provider detail: booking dialog with service/weight/date/time, full price breakdown, M-Pesa STK Push simulation, confirmation linking to /orders/[id].
+  - Order tracker: five-stage timeline with timestamps, rider card with WhatsApp, delivery address with landmark, price breakdown, rating form.
+  - Instagram handle still pending from the owner.
 
 ### R4: Provider, rider and admin screens
 
