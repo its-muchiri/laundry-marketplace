@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useInView, useReducedMotion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 interface CountUpProps {
   to: number;
@@ -14,7 +15,7 @@ interface CountUpProps {
 
 export function CountUp({
   to,
-  duration = 1.6,
+  duration = 1.8,
   decimals = 0,
   prefix = '',
   suffix = '',
@@ -44,7 +45,10 @@ export function CountUp({
   }, [inView, to, duration, reduce]);
 
   return (
-    <span ref={ref} className={className}>
+    <span
+      ref={ref}
+      className={cn('display-tight', className)}
+    >
       {prefix}
       {value.toFixed(decimals)}
       {suffix}
