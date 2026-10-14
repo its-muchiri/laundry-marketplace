@@ -89,34 +89,24 @@ const swatches: Array<[string, string]> = [
 ];
 
 export default function DesignGalleryPage() {
-  const [dark, setDark] = useState(false);
+  const [light, setLight] = useState(false);
   const [ribWidth, setRibWidth] = useState(3);
   const [blur, setBlur] = useState(18);
-  const [tint, setTint] = useState(70);
-  const [intensity, setIntensity] = useState(0.18);
+  const [tint, setTint] = useState<'none' | 'champagne' | 'sage' | 'midnight'>('none');
+  const [intensity, setIntensity] = useState<'subtle' | 'full'>('full');
 
   const toggleTheme = () => {
-    const next = !dark;
-    setDark(next);
-    document.documentElement.classList.toggle('dark', next);
+    const next = !light;
+    setLight(next);
+    document.documentElement.classList.toggle('light', next);
   };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-        <GlassNavbar>
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
-          <span className="text-xl font-bold tracking-tight">{brand.name}</span>
-          <div className="flex items-center gap-2">
-            <Badge variant="secondary">Design gallery (development only)</Badge>
-            <Button variant="outline" size="sm" onClick={toggleTheme}>
-              {dark ? 'Light mode' : 'Dark mode'}
-            </Button>
-          </div>
-        </div>
-      </GlassNavbar>
+        <GlassNavbar />
 
-      <main className="relative mx-auto max-w-7xl space-y-16 px-4 py-12 sm:px-6">
-            <GlowOrbs />
+        <main className="relative mx-auto max-w-7xl space-y-16 px-4 py-12 sm:px-6">
+              <GlowOrbs />
 
         <Reveal>
           <h1 className="text-4xl font-bold tracking-tight">Design system</h1>
@@ -301,7 +291,7 @@ export default function DesignGalleryPage() {
                 </p>
               </GlassCard>
               <ReededGlass
-                ribWidth={ribWidth}
+                rib={ribWidth}
                 blur={blur}
                 tint={tint}
                 intensity={intensity}
@@ -340,27 +330,28 @@ export default function DesignGalleryPage() {
               />
             </label>
             <label className="flex items-center justify-between gap-2">
-              Tint (0-100)
-              <Input
-                type="number"
+              Tint
+              <select
                 value={tint}
-                min={0}
-                max={100}
-                onChange={(e) => setTint(Number(e.target.value))}
-                className="h-8 w-24"
-              />
+                onChange={(e) => setTint(e.target.value as 'none' | 'champagne' | 'sage' | 'midnight')}
+                className="input-field h-8 w-24"
+              >
+                <option value="none">None</option>
+                <option value="champagne">Champagne</option>
+                <option value="sage">Sage</option>
+                <option value="midnight">Midnight</option>
+              </select>
             </label>
             <label className="flex items-center justify-between gap-2">
-              Intensity (0-1)
-              <Input
-                type="number"
-                step={0.01}
+              Intensity
+              <select
                 value={intensity}
-                min={0}
-                max={1}
-                onChange={(e) => setIntensity(Number(e.target.value))}
-                className="h-8 w-24"
-              />
+                onChange={(e) => setIntensity(e.target.value as 'subtle' | 'full')}
+                className="input-field h-8 w-24"
+              >
+                <option value="full">Full</option>
+                <option value="subtle">Subtle</option>
+              </select>
             </label>
           </div>
         </section>
@@ -376,14 +367,15 @@ export default function DesignGalleryPage() {
                 </p>
               </Card>
             </Reveal>
-            <Sheen>
-              <Card className="p-6">
-                <h3 className="font-semibold">Sheen</h3>
+            <Card className="p-6 relative overflow-hidden" style={{ background: 'rgba(255,255,255,0.05)' }}>
+              <Sheen variant="cursor" className="absolute inset-0" />
+              <div className="relative z-10">
+                <h3 className="font-semibold">Sheen (cursor)</h3>
                 <p className="mt-1 text-sm text-foreground-muted">
-                  Hover for a lift and a moving light sweep.
+                  Move cursor over this card for a light sweep.
                 </p>
-              </Card>
-            </Sheen>
+              </div>
+            </Card>
             <Card className="p-6">
               <h3 className="font-semibold">CountUp</h3>
               <p className="mt-1 text-sm text-foreground-muted">
