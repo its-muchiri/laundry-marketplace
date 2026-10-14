@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Check } from 'lucide-react';
+import { m, useReducedMotion } from 'framer-motion';
 import { Reveal } from '@/components/motion/reveal';
 import { Stagger, StaggerItem } from '@/components/motion/stagger';
 import { CountUp } from '@/components/motion/count-up';
@@ -48,6 +49,7 @@ const plans = [
 
 export function Pricing() {
   const [billing, setBilling] = useState<Billing>('one-off');
+  const reduce = useReducedMotion();
 
   return (
     <section className="py-20 bg-surface-raised">
@@ -67,22 +69,20 @@ export function Pricing() {
               role="group"
               aria-label="Billing period"
             >
-              {(
-                [
-                  { id: 'one-off', label: 'One-off' },
-                  { id: 'plan', label: 'Weekly plan · save 10%' },
-                ] as const
-              ).map((option) => (
+              {[
+                { id: 'one-off', label: 'One-off' },
+                { id: 'plan', label: 'Weekly plan • save 10%' },
+              ].map((option) => (
                 <button
                   key={option.id}
                   type="button"
-                  onClick={() => setBilling(option.id)}
-                  aria-pressed={billing === option.id}
+                  onClick={() => setBilling(option.id as Billing)}
+                  aria-pressed={billing === (option.id as Billing)}
                   className={cn(
-                    'px-4 py-2 rounded-full text-sm font-medium transition-colors',
-                    billing === option.id
+                    'px-4 py-2 rounded-full text-sm font-medium transition-all duration-200',
+                    billing === (option.id as Billing)
                       ? 'bg-primary text-primary-foreground'
-                      : 'text-foreground-muted hover:text-foreground'
+                      : 'text-foreground-muted hover:bg-surface hover:text-foreground'
                   )}
                 >
                   {option.label}
@@ -96,51 +96,65 @@ export function Pricing() {
           <Stagger>
             {plans.map((plan) => (
               <StaggerItem key={plan.name} className="h-full">
-                <div
+                <m.div
                   className={cn(
-                    'card h-full p-6 flex flex-col',
+                    'card h-full p-6 flex flex-col border border-border rounded-card relative overflow-hidden',
                     plan.featured && 'ring-2 ring-primary-strong shadow-lifted'
                   )}
+                  whileHover={{ scale: reduce ? 1 : 1.02 }}
+                  whileTap={{ scale: reduce ? 1 : 0.98 }}
+                  transition={{ duration: reduce ? 0 : 0.3, type: 'spring', bounce: 0.2 }}
                 >
                   {plan.featured && (
-                    <span className="self-start bg-primary-strong text-primary-foreground text-xs font-medium px-2 py-1 rounded-full mb-4">
+                    <span className="absolute -top-2 left-2 bg-primary-strong text-primary-foreground text-xs font-medium px-2 py-1 rounded-full">
                       Most popular
                     </span>
                   )}
-                  <h3 className="text-xl font-semibold tracking-tight">
-                    {plan.name}
-                  </h3>
-                  <p className="text-foreground-muted text-sm mb-6">
-                    {plan.blurb}
-                  </p>
-                  <p className="mb-1">
-                    <span className="text-4xl font-bold tracking-tight">
-                      <CountUp
-                        to={billing === 'one-off' ? plan.oneOff : plan.plan}
-                      />
-                    </span>
-                    <span className="text-foreground-muted text-sm">
-                      {' '}
-                      KES/kg avg
-                    </span>
-                  </p>
-                  <p className="text-xs text-foreground-muted mb-6">
-                    {billing === 'one-off'
-                      ? 'Pay per order, weighed at pickup'
-                      : 'Recurring weekly orders, 10% off'}
-                  </p>
-                  <ul className="space-y-3 mb-8 flex-1">
-                    {plan.includes.map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-primary-strong shrink-0 mt-0.5" />
-                        <span className="text-foreground-muted">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <a href="/providers" className="btn-primary text-center w-full">
-                    Start with {plan.name}
-                  </a>
-                </div>
+                  <div className="relative z-10 flex-1 flex flex-col">
+                    <h3 className="text-xl font-semibold tracking-tight mb-4">
+                      {plan.name}
+                    </h3>
+                    <p className="text-foreground-muted text-sm mb-6">
+                      {plan.blurb}
+                    </p>
+                    <p className="mb-4">
+                      <span className="block text-4xl font-bold tracking-tight">
+                        <CountUp
+                          to={billing === 'one-off' ? plan.oneOff : plan.plan}
+                        />
+                      </span>
+                      <span className="text-foreground-muted text-sm block mt-1">
+                        KES/kg avg
+                      </span>
+                    </p>
+                    <p className="text-xs text-foreground-muted mb-6">
+                      {billing === 'one-off'
+                        ? 'Pay per order, weighed at pickup'
+                        : 'Recurring weekly orders, 10% off'}
+                    </p>
+                    <ul className="space-y-3 mb-8 flex-1">
+                      {plan.includes.map((item, index) => (
+                        <m.li
+                          key={item}
+                          className="flex items-start gap-2 text-sm opacity-0"
+                          whileInView={{ opacity: 1, transition: { delay: index * 0.1, duration: 0.3 } }}
+                        >
+                          <Check className="h-4 w-4 text-primary-strong shrink-0 mt-0.5" />
+                          <span className="text-foreground-muted">{item}</span>
+                        </m.li>
+                      ))}
+                    </ul>
+                    <m.a
+                      href="/providers"
+                      className="w-full btn-primary text-center mt-auto"
+                      whileHover={{ scale: reduce ? 1 : 1.05 }}
+                      whileTap={{ scale: reduce ? 1 : 0.95 }}
+                      transition={{ duration: reduce ? 0 : 0.2 }}
+                    >
+                      Start with {plan.name}
+                    </m.a>
+                  </div>
+                </m.div>
               </StaggerItem>
             ))}
           </Stagger>

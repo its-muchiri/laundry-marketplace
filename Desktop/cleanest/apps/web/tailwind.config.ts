@@ -10,7 +10,7 @@ module.exports = {
       colors: {
         ink: 'rgb(var(--ink) / <alpha-value>)',
         midnight: 'rgb(var(--midnight) / <alpha-value>)',
-        ivory: 'rgb(var(--ivory) / <alpha-value>)',
+        ivory: 'rgb(var(--ivoy) / <alpha-value>)',
         bone: 'rgb(var(--bone) / <alpha-value>)',
         champagne: 'rgb(var(--champagne) / <alpha-value>)',
         'champagne-soft': 'rgb(var(--champagne-soft) / <alpha-value>)',
@@ -31,6 +31,9 @@ module.exports = {
         'muted-light': 'rgb(var(--bone) / <alpha-value>)',
         'muted-foreground': 'rgb(var(--on-dark-muted) / <alpha-value>)',
         'muted-foreground-light': 'rgb(var(--on-light-muted) / <alpha-value>)',
+
+        surface: 'rgb(var(--bone) / <alpha-value>)',
+        'surface-raised': 'rgb(var(--ivory) / <alpha-value>)',
 
         primary: 'rgb(var(--champagne) / <alpha-value>)',
         'primary-strong': 'rgb(var(--champagne-soft) / <alpha-value>)',
